@@ -7,31 +7,30 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:local="clr-namespace:Notifyicon.Commands"
         xmlns:commands="clr-namespace:Samples.Commands"
-        Title="MainWindow" Height="188" Width="208">
-    <Grid HorizontalAlignment="Left" Height="188" VerticalAlignment="Top" Width="208" Margin="0,0,0,-21">
+        Title="MainWindow">
 
+    <Grid Background="#FF260A23" Margin="0,0,2,-21">
         <Grid.Resources>
             <local:ShowMessageCommand
 
         x:Key="MessageCommand" />
         </Grid.Resources>
-
         <tb:TaskbarIcon x:Name="MyNotifyIcon" 
                         IconSource="/img/icon.ico" 
                         ToolTipText="hello world"
                         LeftClickCommand="{StaticResource MessageCommand}"
                         LeftClickCommandParameter="одиночный клик"
                         DoubleClickCommand="{StaticResource MessageCommand}"
-                        DoubleClickCommandParameter="двойной клик" >
-                <tb:TaskbarIcon.ContextMenu>
-                     <ContextMenu>
-                     <MenuItem Header="Развернуть"
+                        DoubleClickCommandParameter="двойной клик" Grid.ColumnSpan="2" >
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Развернуть"
                               Command="{commands:ShowSampleWindowCommand}"
                               CommandParameter="{Binding}">
                         <MenuItem.Icon>
                             <Image Width="16"
                                    Height="16"
-                                   Source="/img/icon.ico"/>
+                                   Source="img/Add.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
@@ -41,7 +40,7 @@
                         <MenuItem.Icon>
                             <Image Width="16"
                                    Height="16"
-                                   Source="/img/icon.ico" 
+                                   Source="img/Remove.png" 
                             />
                         </MenuItem.Icon>
                     </MenuItem>
@@ -51,15 +50,27 @@
                         <MenuItem.Icon>
                             <Image Width="16"
                                    Height="16"
-                                   Source="/img/icon.ico" 
+                                   Source="img/Close.png" 
                             />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
-        </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
-        
-        
+        <Canvas Background="#FF311102" Height="535" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,-10,-16" Grid.ColumnSpan="2" Width="768">
+            <Image Source="img/sil.jpeg" Height="538" Width="768" Stretch="Fill"/>
+            <Border Height="80" BorderBrush="#33FFFFFF" BorderThickness="0,0,0,1">
+                <Image Source="img/sil.jpeg" Stretch="UniformToFill" StretchDirection="UpOnly" Margin="0,0,0,0" Width="768" Height="535">
+                    <Image.Effect>
+                        <BlurEffect Radius="25"/>
+                    </Image.Effect>
+                </Image>
+            </Border>
+
+        </Canvas>
+
+
+
 
     </Grid>
 </Window>
